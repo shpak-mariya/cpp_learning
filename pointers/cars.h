@@ -51,7 +51,7 @@ class Car {
     Motor motor;
     Country country;
     Year year;
-    double prize;
+    double price;
 public:
     Car(string, Brand, Motor, Country, Year);
     string get_name() const;
@@ -59,14 +59,14 @@ public:
     Motor get_motor() const;
     Country get_country() const;
     int get_year() const;
-    double get_prize() const;
-    void set_prize(double);
+    double get_price() const;
+    void set_price(double);
 };
 
 class Cars_base {
-    vector<Brand> *brands;
-    vector<Motor> *motors;
-    vector<Car> *cars;
+    vector<Brand*> *brands;
+    vector<Motor*> *motors;
+    vector<Car*> *cars;
 public:
     Cars_base();
     Brand* add_brand(string, Country);

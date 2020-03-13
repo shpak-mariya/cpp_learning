@@ -6,10 +6,13 @@
 #define POINTERS_CARS_H
 
 #include <iostream>
+#include <memory>
 #include <fstream>
 #include <string>
 #include <vector>
 using namespace std;
+// TODO add templates for unique_ptr<...>
+
 
 // TODO add country table with full names
 enum Country {
@@ -60,19 +63,21 @@ public:
     Country get_country() const;
     int get_year() const;
     double get_price() const;
+    // TODO change signature
     void set_price(double);
 };
 
 class Cars_base {
-    vector<Brand*> *brands;
-    vector<Motor*> *motors;
-    vector<Car*> *cars;
+    vector<unique_ptr<Brand>> brands;
+    vector<unique_ptr<Motor>> motors;
+    vector<unique_ptr<Car>> cars;
 public:
-    Cars_base();
-    Brand* add_brand(string, Country);
-    Motor* add_motor(string, float);
-    Car* add_car(string, Brand, Motor, Country, int);
+    Cars_base() = default;
+    void add_brand(string, Country);
+    void add_motor(string, float);
+    void add_car(string, Brand, Motor, Country, int);
     void show_brands() const;
+    void show_motors() const;
     void show_cars() const;
 };
 

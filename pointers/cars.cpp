@@ -75,49 +75,48 @@ void Car::set_price(double p) {
 
 
 // CARS_BASE
-Cars_base::Cars_base() {
-    brands = new vector<Brand*>;
-    motors = new vector<Motor*>;
-    cars = new vector<Car*>;
-}
-
-Brand* Cars_base::add_brand(string n, Country c) {
-    Brand *b = new Brand{n, c};
+void Cars_base::add_brand(string n, Country c) {
+    auto brand = make_unique<Brand>(n, c);
     // default: brand has own factory in brand's country
-    b->add_factory(c);
-    brands->push_back(b);
-    return b;
+    brand->add_factory(c);
+    brands.push_back(move(brand));
 }
-Motor* Cars_base::add_motor(string n, float v) {
-    Motor *m =  new Motor{n, v};
-    motors->push_back(m);
-    return m;
+void Cars_base::add_motor(string n, float v) {
+    auto motor = make_unique<Motor>(n, v);
+    motors.push_back(move(motor));
 }
-Car* Cars_base::add_car(string n, Brand b, Motor m, Country c, int y) {
-    Car *car = new Car(n, b, m, c, Year{y});
+void Cars_base::add_car(string n, Brand b, Motor m, Country c, int y) {
+    auto car = make_unique<Car>(n, b, m, c, Year{y});
     car->set_price(0.0);
-    cars->push_back(car);
-    return car;
+    cars.push_back(move(car));
 }
 
 // TODO fix double code
-void Cars_base::show_cars() const {
-    cout << cars->size() << endl;
-    if (cars->size() == 0) {
-        cout << "There are no cars yet." << endl;
-        return;
-    }
-    for (auto &c : *cars) {
-        cout << *c << endl;
-    }
-}
 void Cars_base::show_brands() const {
-    if (brands->size() == 0) {
+    if (brands.empty()) {
         cout << "There are no brands yet." << endl;
         return;
     }
-    for (auto &b : *brands) {
+    for (auto &b : brands) {
         cout << *b << endl;
+    }
+}
+void Cars_base::show_motors() const {
+    if (motors.empty()) {
+        cout << "There are no brands yet." << endl;
+        return;
+    }
+    for (auto &m : motors) {
+        cout << *m << endl;
+    }
+}
+void Cars_base::show_cars() const {
+    if (cars.empty()) {
+        cout << "There are no cars yet." << endl;
+        return;
+    }
+    for (auto &c : cars) {
+        cout << *c << endl;
     }
 }
 

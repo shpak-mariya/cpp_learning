@@ -9,17 +9,35 @@ using namespace std;
 
 
 //YEAR
-Year::Year(int y_value) {
-    if (y_value < 2020 && y_value > 1940) {
-        y = y_value;
+Year::Year(int y) {
+    if (y < 2020 && y > 1940) {
+        year = y;
     }
     else {
-        throw std::invalid_argument("Incorrect value!");
-    };
+        throw invalid_argument("Incorrect value!");
+    }
+}
+int Year::get_year() const {
+    return year;
+}
+
+
+// MOTOR
+string Motor::get_name() const {
+    return name;
+}
+float Motor::get_value() const {
+    return value;
 }
 
 
 // BRAND
+string Brand::get_name() const {
+    return name;
+}
+Country Brand::get_country() const {
+    return country;
+}
 void Brand::add_factory(Country c) {
     factories.push_back(c);
 }
@@ -32,6 +50,24 @@ void Brand::add_motor(Motor m) {
 Car::Car(string n, Brand b, Motor m, Country c, Year y) :
         name(n), brand(b), motor(m), country(c), year(y) {
     // TODO check for correct values - (Toyota from Belarus, incorrect name of car...)
+}
+string Car::get_name() const {
+    return name;
+}
+Brand Car::get_brand() const {
+    return brand;
+}
+Motor Car::get_motor() const {
+    return motor;
+}
+Country Car::get_country() const {
+    return country;
+}
+int Car::get_year() const {
+    return year.get_year();
+}
+double Car::get_prize() const {
+    return prize;
 }
 void Car::set_prize(double p) {
     prize = p;
@@ -65,7 +101,7 @@ Car* Cars_base::add_car(string n, Brand b, Motor m, Country c, int y) {
 }
 
 // TODO fix double code
-void Cars_base::show_cars() {
+void Cars_base::show_cars() const {
     if (cars->size() == 0) {
         cout << "There are no cars yet." << endl;
         return;
@@ -74,7 +110,7 @@ void Cars_base::show_cars() {
         cout << c << endl;
     }
 }
-void Cars_base::show_brands() {
+void Cars_base::show_brands() const {
     if (brands->size() == 0) {
         cout << "There are no brands yet." << endl;
         return;
@@ -87,11 +123,11 @@ void Cars_base::show_brands() {
 
 // OPERATORS
 ostream& operator<<(ostream& os, Brand b) {
-    return os << b.name;
+    return os << b.get_name();
 }
 ostream& operator<<(ostream& os, Motor m) {
-    return os << m.name() << " " << m.value();
+    return os << m.get_name() << " " << m.get_value();
 }
 ostream& operator<<(ostream& os, Car c) {
-    return os << c.brand << " " << c.name << " (" << c.country << "), " << c.motor << ", " << c.year.year();
+    return os << c.get_brand() << " " << c.get_name() << " (" << c.get_country() << "), " << c.get_motor() << ", " << c.get_year();
 }

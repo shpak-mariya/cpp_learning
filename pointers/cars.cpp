@@ -75,20 +75,23 @@ void Car::set_price(double p) {
 
 
 // CARS_BASE
-void Cars_base::add_brand(string n, Country c) {
+Brand* Cars_base::add_brand(string n, Country c) {
     auto brand = make_unique<Brand>(n, c);
     // default: brand has own factory in brand's country
     brand->add_factory(c);
     brands.push_back(move(brand));
+    return brands[brands.size() - 1].get();
 }
-void Cars_base::add_motor(string n, float v) {
+Motor* Cars_base::add_motor(string n, float v) {
     auto motor = make_unique<Motor>(n, v);
     motors.push_back(move(motor));
+    return motors[motors.size() - 1].get();
 }
-void Cars_base::add_car(string n, Brand b, Motor m, Country c, int y) {
+Car* Cars_base::add_car(string n, const Brand& b, const Motor& m, Country c, int y) {
     auto car = make_unique<Car>(n, b, m, c, Year{y});
     car->set_price(0.0);
     cars.push_back(move(car));
+    return cars[cars.size() - 1].get();
 }
 
 // TODO fix double code
@@ -122,13 +125,13 @@ void Cars_base::show_cars() const {
 
 
 // OPERATORS
-ostream& operator<<(ostream& os, Brand b) {
+ostream& operator<<(ostream& os, const Brand& b) {
     return os << b.get_name();
 }
-ostream& operator<<(ostream& os, Motor m) {
+ostream& operator<<(ostream& os, const Motor& m) {
     return os << m.get_name() << " " << m.get_value();
 }
-ostream& operator<<(ostream& os, Car c) {
+ostream& operator<<(ostream& os, const Car& c) {
     os << c.get_brand() << " " << c.get_name() << " ("
        << c.get_country() << "), " << c.get_motor() << ", "
        << c.get_year() << ". ";

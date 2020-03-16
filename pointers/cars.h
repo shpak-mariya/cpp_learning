@@ -73,16 +73,16 @@ class Cars_base {
     vector<unique_ptr<Car>> cars;
 public:
     Cars_base() = default;
-    void add_brand(string, Country);
-    void add_motor(string, float);
-    void add_car(string, Brand, Motor, Country, int);
+    Brand* add_brand(string, Country);
+    Motor* add_motor(string, float);
+    Car* add_car(string, const Brand&, const Motor&, Country, int);
     void show_brands() const;
     void show_motors() const;
     void show_cars() const;
 };
 
-ostream& operator<<(ostream&, Brand);
-ostream& operator<<(ostream&, Motor);
-ostream& operator<<(ostream&, Car);
+ostream& operator<<(ostream&, const Brand&);
+ostream& operator<<(ostream&, const Motor&);
+ostream& operator<<(ostream&, const Car&);
 
 #endif //POINTERS_CARS_H

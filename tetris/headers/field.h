@@ -6,7 +6,7 @@
 #define SFML_FIELD_H
 
 #include <SFML/Graphics.hpp>
-#include "figure.h"
+#include "tetramino.h"
 #include "block.h"
 #include <memory>
 
@@ -16,6 +16,7 @@ class Field {
     std::unique_ptr<std::vector<std::vector<Block>>> F;
 public:
     Field();
+    void display_field(sf::RenderWindow&);
 };
 
 #endif //SFML_FIELD_H

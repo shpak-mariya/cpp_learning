@@ -14,16 +14,7 @@ enum TetraminoType {
     field, i, j, l, o, s, t, z
 };
 
-//std::map<FigureType, sf::Color> FigureColor = {
-//        {FigureType::field, sf::Color::White},
-//        {FigureType::i, sf::Color(0, 240, 240)},
-//        {FigureType::j, sf::Color(0, 0, 240)},
-//        {FigureType::l, sf::Color(240, 160, 240)},
-//        {FigureType::o, sf::Color(240, 240, 0)},
-//        {FigureType::s, sf::Color(0, 240, 0)},
-//        {FigureType::t, sf::Color(160, 0, 240)},
-//        {FigureType::z, sf::Color(240, 0, 0)}
-//};
+extern std::map<TetraminoType, sf::Color> TetraminoColor;
 
 class Tetramino {
 protected:

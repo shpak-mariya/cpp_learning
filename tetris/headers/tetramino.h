@@ -9,6 +9,7 @@
 #include <iostream>
 #include <memory>
 #include <map>
+#include <vector>
 
 enum TetraminoType {
     field, i, j, l, o, s, t, z
@@ -17,18 +18,10 @@ enum TetraminoType {
 extern std::map<TetraminoType, sf::Color> TetraminoColor;
 
 class Tetramino {
-protected:
     TetraminoType type;
+    std::vector<bool> scheme;
 public:
-    virtual void rotate() = 0;
-    virtual ~Tetramino() = default;
+    Tetramino();
+    void rotate();
 };
-
-class I : Tetramino {
-public:
-    I();
-    void rotate() override;
-    ~I() override = default;
-};
-
 #endif //TETRIS_TETRAMINO_H

@@ -15,10 +15,35 @@ std::map<TetraminoType, sf::Color> TetraminoColor = {
         {TetraminoType::z, sf::Color(240, 0, 0)}
 };
 
-I::I() {
-    type = TetraminoType::i;
+
+Tetramino::Tetramino() {
+    int r = std::rand() % 7 + 1;
+    type = static_cast<TetraminoType>(r);
+    switch (r) {
+    case 1: // i
+        scheme = {true, true, true, true, false, false, false, false};
+        break;
+    case 2: // j
+        scheme = {true, false, false, false, true, true, true, false};
+        break;
+    case 3: // l
+        scheme = {false, false, true, false, true, true, true, false};
+        break;
+    case 4: // o
+        scheme = {true, true, false, false, true, true, false, false};
+        break;
+    case 5: // s
+        scheme = {false, true, true, false, true, true, false, false};
+        break;
+    case 6: // t
+        scheme = {false, true, false, false, true, true, true, false};
+        break;
+    case 7: // z
+        scheme = {true, true, false, false, false, true, true, false};
+        break;
+    }
 }
 
-void I::rotate() {
+void Tetramino::rotate() {
 
 }

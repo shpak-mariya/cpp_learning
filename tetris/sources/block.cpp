@@ -3,9 +3,9 @@
 //
 #include "../headers/block.h"
 
-Block::Block() : empty(true), type(FigureType::field) {}
+Block::Block() : empty(true), type(TetraminoType::field) {}
 
 void Block::set_empty() {
     empty = false;
-    type = FigureType::field;
+    type = TetraminoType::field;
 }

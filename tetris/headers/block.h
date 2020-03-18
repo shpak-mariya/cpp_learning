@@ -8,11 +8,11 @@
 #include <iostream>
 #include <memory>
 #include <map>
-#include "figure.h"
+#include "tetramino.h"
 
 struct Block {
     bool empty;
-    FigureType type;
+    TetraminoType type;
     Block();
     void set_empty();
 };

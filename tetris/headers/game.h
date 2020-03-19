@@ -5,21 +5,24 @@
 #ifndef TETRIS_GAME_H
 #define TETRIS_GAME_H
 
-#include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
-
-#include <iostream>
-#include <vector>
 #include "field.h"
+#include "User.h"
 
 class Game {
+    // SFML elements
     sf::RenderWindow* window;
     sf::Event event;
+    sf::Clock dt_clock;
+    float dt;
+    User* user;
+
     void init_window();
+    void init_user();
 public:
     Game();
     ~Game();
 
+    void update_dt();
     void update_event();
     void update();
     void render();

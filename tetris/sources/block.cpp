@@ -3,7 +3,8 @@
 //
 #include "../headers/block.h"
 
-Block::Block() : empty(true), type(TetraminoType::field) {}
+Block::Block()
+    : empty(true), type(TetraminoType::field) {}
 
 void Block::set_empty() {
     empty = false;

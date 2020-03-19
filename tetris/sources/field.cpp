@@ -11,7 +11,8 @@ Field::Field() {
     F = std::make_unique<std::vector<std::vector<Block>>>(field);
 }
 
-void Field::display_field(sf::RenderWindow &window) {
+void Field::display(sf::RenderWindow& window) {
+    // TODO hide const values (setting values) into other structure
     const int block_size = 35;
     const int outline_size = 1;
     constexpr int full_block_size = block_size + 2 * outline_size;

@@ -52,7 +52,7 @@ void Game::render() {
     //some items
     user->render();
     Field field;
-    field.display_field(*window);
+    field.display(*window);
 
     window->display();
 }

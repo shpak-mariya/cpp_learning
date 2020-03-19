@@ -2,12 +2,10 @@
 // Created by mar on 19/03/2020.
 //
 
-#include "../headers/User.h"
+#include "../headers/user.h"
 
 User::User(std::string n)
-    : name(n), score(0) {
-
-}
+    : name(n), score(0) {}
 
 void User::update() {
 

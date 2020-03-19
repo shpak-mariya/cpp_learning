@@ -6,7 +6,7 @@
 #define TETRIS_GAME_H
 
 #include "field.h"
-#include "User.h"
+#include "user.h"
 
 class Game {
     // SFML elements

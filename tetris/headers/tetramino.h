@@ -7,7 +7,6 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <memory>
 #include <map>
 #include <vector>
 
@@ -22,6 +21,8 @@ class Tetramino {
     std::vector<bool> scheme;
 public:
     Tetramino();
+    ~Tetramino() = default;
+
     void rotate();
 };
 #endif //TETRIS_TETRAMINO_H

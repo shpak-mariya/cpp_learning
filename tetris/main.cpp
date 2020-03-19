@@ -1,5 +1,4 @@
-#include <SFML/Graphics.hpp>
-#include "headers/field.h"
+#include "headers/game.h"
 
 int main() {
     Field field;

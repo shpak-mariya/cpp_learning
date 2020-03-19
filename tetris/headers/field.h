@@ -2,13 +2,11 @@
 // Created by mar on 18/03/2020.
 //
 
-#ifndef SFML_FIELD_H
-#define SFML_FIELD_H
+#ifndef TETRIS_FIELD_H
+#define TETRIS_FIELD_H
 
-#include <SFML/Graphics.hpp>
 #include "tetramino.h"
 #include "block.h"
-#include <memory>
 
 class Field {
     const int x = 10;
@@ -16,7 +14,9 @@ class Field {
     std::unique_ptr<std::vector<std::vector<Block>>> F;
 public:
     Field();
-    void display_field(sf::RenderWindow&);
+    ~Field() = default;
+
+    void display(sf::RenderWindow&);
 };
 
-#endif //SFML_FIELD_H
+#endif //TETRIS_FIELD_H
